@@ -54,21 +54,16 @@
             border: none;
         }
 
-        /* Forces simulator to take full space since skin footer is hidden */
         .nofooter iframe {
             height: 100vh;
         }
 
         footer {
-            display: none !important; /* Hides the default layout footer */
+            display: none !important;
         }
 
         #fullscreen {
-            position: absolute;
-            right: 0.25rem;
-            bottom: 0;
-            cursor: pointer;
-            z-index: 100;
+            display: none !important;
         }
         
         .lds-ripple {
@@ -119,7 +114,7 @@
     <div id="loader" class="lds-ripple">
         <div></div>
         <div></div>
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 32 32" xml:space="preserve"
+        <svg xmlns="http://w3.org" version="1.1" x="0" y="0" viewBox="0 0 32 32" xml:space="preserve"
             id="svg2">
             <style type="text/css" id="style4"></style>
             <g id="g4212" transform="matrix(.79626 0 0 .79626 -68.322 9.868)">
@@ -142,14 +137,17 @@
         sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe>
 
     <script type="text/javascript">
-        // Modifies the target runtime URL to include simulator-hiding variables before launching
         window.addEventListener('load', function () {
             var simframe = document.getElementById('simframe');
             if (simframe && window.makeCodeRunUrl) {
                 var baseUrl = window.makeCodeRunUrl;
-                // Append MakeCode flags to force fullscreen and hide skin borders
-                var hiddenSimUrl = baseUrl + (baseUrl.indexOf('?') >= 0 ? '&' : '?') + 'hideSimButtons=1&fullscreen=1&nofooter=1&autofocus=1';
-                simframe.src = hiddenSimUrl;
+                
+                // Forces the frame out of "run mode layout" and converts it to pure raw embed mode layout
+                var embedUrl = baseUrl.replace('---run', '---embed');
+                
+                // Appends extra canvas control modifiers to clear manual/edit wrappers
+                var finalUrl = embedUrl + (embedUrl.indexOf('?') >= 0 ? '&' : '?') + 'embed=1&hideSimButtons=1&fullscreen=1&nofooter=1&autofocus=1';
+                simframe.src = finalUrl;
             }
         });
     </script>
