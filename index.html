@@ -37,6 +37,8 @@
             font-family: monospace;
             overflow: hidden;
             font-size: 14pt;
+            margin: 0;
+            padding: 0;
         }
 
         .embed {
@@ -47,34 +49,18 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: calc(100% - 1.5em);
+            width: 100vw;
+            height: 100vh;
             border: none;
         }
 
+        /* Forces simulator to take full space since skin footer is hidden */
         .nofooter iframe {
-            height: 100%;
+            height: 100vh;
         }
 
         footer {
-            color: grey;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            left: 0;
-            z-index: 100;
-            text-align: center;
-            font-size: 1em;
-            margin-bottom: 0.25em;
-        }
-
-        footer a {
-            color: grey;
-        }
-
-        .embed footer,
-        .embed footer a {
-            color: black;
+            display: none !important; /* Hides the default layout footer */
         }
 
         #fullscreen {
@@ -82,13 +68,14 @@
             right: 0.25rem;
             bottom: 0;
             cursor: pointer;
+            z-index: 100;
         }
+        
         .lds-ripple {
             width: 80px;
             height: 80px;
             margin: auto;
             position: absolute;
-            margin: auto;
             top: 0;
             right: 0;
             bottom: 0;
@@ -128,7 +115,7 @@
     </style>
 </head>
 
-<body id="root">
+<body id="root" class="nofooter">
     <div id="loader" class="lds-ripple">
         <div></div>
         <div></div>
@@ -152,36 +139,19 @@
         </svg>
     </div>
     <iframe id="simframe" allowfullscreen="allowfullscreen"
-        sandbox="allow-popups allow-forms allow-scripts allow-same-origin">
-    </iframe>
-    <footer id="footer">
-        <a target="blank" rel="nofollow noopener" href="https://{{ site.github.owner_name }}.github.io/{{ site.github.repository_name }}/README">Manual</a>
-        <a target="blank" rel="nofollow noopener" href="https://arcade.makecode.com/#pub:github:{{ site.github.owner_name }}/{{ site.github.repository_name }}">Edit</a>
-        <a target="blank" rel="nofollow noopener" href="https://github.com/{{ site.github.owner_name }}/{{ site.github.repository_name }}">GitHub</a>
-        <span id="version"></span>
-        <div id="fullscreen">⇲</div>
-    </footer>
+        sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe>
+
     <script type="text/javascript">
-        makeCodeRun({ js: "./assets/js/binary.js?v={{ site.github.build_revision }}" });
-
-        if (window.location && window.location.search) {
-            var noFooter = /nofooter=1/i.test(window.location.search);
-            var embed = /embed=1/i.test(window.location.search);
-            var root = document.querySelector("#root");
-
-            if (noFooter) {
-                var footer = document.querySelector("#footer");
-                if (root)
-                    root.className += " nofooter";
-                if (footer)
-                    footer.remove();
+        // Modifies the target runtime URL to include simulator-hiding variables before launching
+        window.addEventListener('load', function () {
+            var simframe = document.getElementById('simframe');
+            if (simframe && window.makeCodeRunUrl) {
+                var baseUrl = window.makeCodeRunUrl;
+                // Append MakeCode flags to force fullscreen and hide skin borders
+                var hiddenSimUrl = baseUrl + (baseUrl.indexOf('?') >= 0 ? '&' : '?') + 'hideSimButtons=1&fullscreen=1&nofooter=1&autofocus=1';
+                simframe.src = hiddenSimUrl;
             }
-
-            if (embed && root) {
-                root.className += " embed";
-            }
-        }
+        });
     </script>
 </body>
-
 </html>
