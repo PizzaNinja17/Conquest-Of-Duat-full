@@ -6,30 +6,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ site.github.project_title }}</title>
-    <meta name="description" content="{{ site.github.project_tagline }}" />
-    <meta name="author" content="{{ site.github.owner_name }}">
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="/" />
-    <meta name="twitter:title" content="{{ site.github.project_tagline }}" />
-    <meta name="twitter:description" content="{{ site.github.project_tagline }}" />
-    <meta name="twitter:image" content="./icon.png" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="{{ site.github.project_title }}">
-    <meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="application-name" content="{{ site.github.project_title }}">
-    <meta name="theme-color" content="#000">
-    <meta property="og:title" content="{{ site.github.project_title }}" />
-    <meta property="og:site_name" content="{{ site.github.project_title }}" />
-    <meta property="og:description" content="{{ site.github.project_tagline }}" />
-    <meta property="og:image" content="./icon.png" />
-    <link rel="apple-touch-icon" href="./icon.png">
-    <link rel="icon" type="image/png" href="./icon.png">
-    <link rel="shortcut icon" href="./icon.png">
-    <!-- loader.js is removed here to stop it from forcing the simulator skin layout -->
-    <script type="text/javascript" src="./assets/js/custom.js?v={{ site.github.build_revision }}"></script>
+    <title>Conquest Of Duat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         html, body {
             background: black;
@@ -48,28 +26,17 @@
             height: 100vh;
             border: none;
         }
-
-        footer {
-            display: none !important;
-        }
     </style>
 </head>
 
 <body>
-    <iframe id="simframe" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe>
-
-    <script type="text/javascript">
-        // Extract project ID directly from the current GitHub Pages repository name
-        var repoName = window.location.pathname.split('/')[1] || "";
-        
-        // Fallback target query check if launched from custom domains
-        if(!repoName || repoName === "index.html") {
-            repoName = "{{ site.github.repository_name }}";
-        }
-
-        // Generate clean fullscreen arcade layout link
-        var cleanUrl = "https://makecode.com" + repoName + "&embed=1&hideSimButtons=1&fullscreen=1&nofooter=1&autofocus=1";
-        document.getElementById('simframe').src = cleanUrl;
-    </script>
+    <!-- Clean, unrestricted canvas embed targeting the exact game name -->
+    <iframe 
+        id="simframe" 
+        src="https://makecode.com"
+        allowfullscreen="allowfullscreen" 
+        sandbox="allow-popups allow-forms allow-scripts allow-same-origin">
+    </iframe>
 </body>
+
 </html>
