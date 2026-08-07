@@ -1,0 +1,66 @@
+{
+    "name": "Conquest Of Duat Github",
+    "description": "",
+    "dependencies": {
+        "device": "*",
+        "arcade-platformer": "github:microsoft/arcade-platformer#v0.0.10",
+        "Extra Effects": "github:alexszeto/extra-effects#v3.1.0",
+        "Timers": "github:microsoft/arcade-timers#v1.1.0",
+        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2",
+        "arcade-sprite-util": "github:jwunderl/arcade-sprite-util#v0.4.1",
+        "settings-blocks": "github:microsoft/pxt-settings-blocks#v1.0.0",
+        "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
+        "arcade-text": "github:microsoft/arcade-text#v1.3.0",
+        "Color Fading": "github:jwunderl/pxt-color#v0.2.3",
+        "arcade-sprite-events": "github:riknoll/arcade-sprite-events#dc93eec8412053ebbd2b8f01cf5b6ae285d28900",
+        "arcade-character-animations": "github:microsoft/arcade-character-animations#v0.0.2",
+        "arcade-fancy-text": "github:riknoll/arcade-fancy-text#v0.1.2",
+        "pxt-arcade-image-transform": "github:robo-technical-group/pxt-arcade-image-transform#v1.0.9",
+        "pxt-lanterns": "github:woofwoofcodes/lanterns#v1.2.0",
+        "Arcade Easing - Copy": "github:ChimbroDaPro/arcade-easing#v1.0.0",
+        "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.1.0"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "assets.json",
+        "tilemap.g.jres",
+        "tilemap.g.ts",
+        "images.g.jres",
+        "images.g.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "branch": "v1.12.58",
+        "tag": "v1.12.58",
+        "commits": "https://github.com/microsoft/pxt-arcade/commits/584edd3155f56d4d2465bddaa067b5e48a37c430",
+        "target": "4.0.14",
+        "pxt": "8.5.69",
+        "targetId": "arcade"
+    },
+    "supportedTargets": [
+        "arcade"
+    ],
+    "preferredEditor": "tsprj",
+    "palette": [
+        "#000000",
+        "#CEE7F8",
+        "#F02019",
+        "#B0072C",
+        "#5E9B7C",
+        "#89ACE9",
+        "#21266A",
+        "#355C4D",
+        "#4563BE",
+        "#652A41",
+        "#D36B40",
+        "#C7513F",
+        "#EC9B41",
+        "#5C588C",
+        "#473C60",
+        "#300D28"
+    ]
+}
